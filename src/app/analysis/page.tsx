@@ -3,12 +3,13 @@
 import { useEffect } from "react";
 
 import { getUserId } from "@/lib/user";
-import { getSession, updateSession } from "@/lib/session";
+import { getSession } from "@/lib/session";
 
 import LifeTree from "@/components/analysis/LifeTree";
 import DecisionScorecard from "@/components/analysis/DecisionScorecard";
 import PauseReflect from "@/components/analysis/PauseReflect";
 import ActionPlan from "@/components/analysis/ActionPlan";
+import SpeakButton from "@/components/common/SpeakButton";
 
 
 function getReadinessLabel(score: number) {
@@ -210,11 +211,22 @@ ${report.reflection}
         <section className="mt-16 rounded-3xl border border-slate-800 bg-slate-900 p-8">
 
 
-          <h2 className="text-3xl font-bold">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
 
-            📖 Understanding Your Situation
 
-          </h2>
+            <h2 className="text-3xl font-bold">
+
+              📖 Understanding Your Situation
+
+            </h2>
+
+
+            <SpeakButton
+              text={report.summary}
+            />
+
+
+          </div>
 
 
 

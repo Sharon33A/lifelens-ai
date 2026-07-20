@@ -1,5 +1,7 @@
 "use client";
 
+import SpeakButton from "@/components/common/SpeakButton";
+
 type Path = {
   title: string;
   tag: string;
@@ -29,9 +31,9 @@ export default function LifeTree({ paths }: Props) {
         🌳
       </div>
 
-      <div className="mx-auto mt-2 h-10 w-1 bg-amber-700 rounded-full" />
+      <div className="mx-auto mt-2 h-10 w-1 rounded-full bg-amber-700" />
 
-      <div className="mx-auto h-1 max-w-5xl bg-amber-700 rounded-full" />
+      <div className="mx-auto h-1 max-w-5xl rounded-full bg-amber-700" />
 
       <div className="mt-8 grid gap-8 lg:grid-cols-3">
 
@@ -44,13 +46,40 @@ export default function LifeTree({ paths }: Props) {
 
             <div className="absolute -top-8 left-1/2 h-8 w-1 -translate-x-1/2 rounded-full bg-amber-700" />
 
-            <div className="text-center">
+            <div className="flex items-start justify-between">
 
-              <div className="text-5xl">
-                {emojis[index]}
+              <div>
+
+                <div className="text-5xl">
+                  {emojis[index]}
+                </div>
+
               </div>
 
-              <h3 className="mt-4 text-2xl font-bold">
+              <SpeakButton
+                text={`
+${path.title}
+
+${path.tag}
+
+Confidence Score: ${path.confidence} percent.
+
+After Three Months:
+${path.timeline["3months"]}
+
+After One Year:
+${path.timeline["1year"]}
+
+After Five Years:
+${path.timeline["5years"]}
+`}
+              />
+
+            </div>
+
+            <div className="mt-4 text-center">
+
+              <h3 className="text-2xl font-bold">
                 {path.title}
               </h3>
 
@@ -67,6 +96,7 @@ export default function LifeTree({ paths }: Props) {
             <div className="mt-8 space-y-5">
 
               <div className="rounded-xl bg-slate-950 p-4">
+
                 <p className="font-semibold text-cyan-300">
                   📅 3 Months
                 </p>
@@ -74,9 +104,11 @@ export default function LifeTree({ paths }: Props) {
                 <p className="mt-2 text-slate-300">
                   {path.timeline["3months"]}
                 </p>
+
               </div>
 
               <div className="rounded-xl bg-slate-950 p-4">
+
                 <p className="font-semibold text-cyan-300">
                   📅 1 Year
                 </p>
@@ -84,9 +116,11 @@ export default function LifeTree({ paths }: Props) {
                 <p className="mt-2 text-slate-300">
                   {path.timeline["1year"]}
                 </p>
+
               </div>
 
               <div className="rounded-xl bg-slate-950 p-4">
+
                 <p className="font-semibold text-cyan-300">
                   📅 5 Years
                 </p>
@@ -94,6 +128,7 @@ export default function LifeTree({ paths }: Props) {
                 <p className="mt-2 text-slate-300">
                   {path.timeline["5years"]}
                 </p>
+
               </div>
 
             </div>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import SpeakButton from "@/components/common/SpeakButton";
 import { Button } from "@/components/ui/button";
 import { getSession, updateSession } from "@/lib/session";
 
@@ -91,9 +91,22 @@ export default function QuestionsPage() {
               key={index}
               className="rounded-2xl border border-slate-800 bg-slate-900 p-6"
             >
-              <h2 className="text-lg font-semibold">
-                {index + 1}. {item.question}
-              </h2>
+              <div className="flex items-start justify-between gap-4">
+
+             <h2 className="text-lg font-semibold flex-1">
+                    {index + 1}. {item.question}
+             </h2>
+
+             <SpeakButton
+              text={`
+        Question:
+        ${item.question}
+
+        Options:
+        ${item.options.join(". ")}
+`    }
+     />
+   </div>
 
               <div className="mt-5 flex flex-wrap gap-3">
                 {item.options.map((option) => (

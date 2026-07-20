@@ -1,5 +1,7 @@
 "use client";
 
+import SpeakButton from "@/components/common/SpeakButton";
+
 interface Props {
   actionPlan: string[];
 }
@@ -10,21 +12,35 @@ export default function ActionPlan({
   return (
     <section className="mt-16 rounded-3xl border border-emerald-500/30 bg-emerald-500/10 p-8">
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-start justify-between">
 
-        <span className="text-4xl">🚀</span>
+        <div className="flex items-center gap-3">
 
-        <div>
+          <span className="text-4xl">🚀</span>
 
-          <h2 className="text-3xl font-bold">
-            One Small Step Today
-          </h2>
+          <div>
 
-          <p className="mt-1 text-emerald-200">
-            Small actions create better futures.
-          </p>
+            <h2 className="text-3xl font-bold">
+              One Small Step Today
+            </h2>
+
+            <p className="mt-1 text-emerald-200">
+              Small actions create better futures.
+            </p>
+
+          </div>
 
         </div>
+
+        <SpeakButton
+          text={`
+One Small Step Today.
+
+${actionPlan
+  .map((step, index) => `Step ${index + 1}. ${step}`)
+  .join("\n\n")}
+`}
+        />
 
       </div>
 
